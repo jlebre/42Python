@@ -17,7 +17,7 @@ def main():
 
     check_len = lambda word: len(word) >= nb
 
-    new = ft_filter(check_len, words)
+    new = list(ft_filter(check_len, words))
     print(new)
 
 
@@ -31,8 +31,6 @@ def parse(argv):
     if len(argv) != 3:
         return False
 
-    if not isinstance(argv[1], str):
-        return False
     try:
         int(argv[2])
     except ValueError:

@@ -40,13 +40,36 @@ NESTED_MORSE = {
     "9": "----. "
 }
 
+
 def main():
     """
     Main
     """
 
+    argv = sys.argv
 
-    morse = "".join(NESTED_MORSE[c])
-    
+    if not parse(argv):
+        raise AssertionError("the arguments are bad")
+
+    phrase = argv[1].upper()
+    morse = ""
+
+    for c in phrase:
+        morse += NESTED_MORSE[c]
+
+    print(morse)
+
+
+def parse(argv):
+    """
+    Parse function
+    """
+    if len(argv) != 2:
+        return False
+    if not all(c.isalnum() or c.isspace() for c in argv[1]):
+        return False
+    return True
+
+
 if __name__ == "__main__":
     main()
