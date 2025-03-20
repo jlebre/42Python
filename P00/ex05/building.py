@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     """
     Main
@@ -12,8 +13,9 @@ def main():
     else:
         print("What is the text to count?\nHello World!")
         text = "Hello World!\r"
-    
+
     count(text)
+
 
 def count(string):
     """
@@ -41,7 +43,7 @@ def count(string):
             Digi += 1
         else:
             Pont += 1
-    
+
     total = Up + Lo + Pont + Spa + Digi
     print(f"The text contains {total} characters")
     print(f"{Up} upper letters")
@@ -49,6 +51,7 @@ def count(string):
     print(f"{Pont} pontuation marks")
     print(f"{Spa} spaces")
     print(f"{Digi} digits")
-    
+
+
 if __name__ == "__main__":
     main()
