@@ -1,5 +1,6 @@
 from load_image import ft_load
 from PIL import Image
+from PIL import ImageOps
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -8,18 +9,16 @@ def main():
     """
     main
     """
-    path = "animal.jpeg"
-    print(ft_load(path))
     try:
+        path = "animal.jpeg"
         img = Image.open(path)
-        zoom(img)
+        rotate(img)
     except Exception as error:
         print(f"Error: {error}")
 
-
-def zoom(img):
+def rotate(img):
     """
-    Function to zoom
+    Function to rotate
     """
     try:
         crop_box = (450, 100, 850, 500)
@@ -28,7 +27,12 @@ def zoom(img):
 
         img_arr = np.array(c_img.convert("L"))[..., np.newaxis]
 
-        print(f"New shape after slicing: {img_arr.shape}")
+        print(f"The shape of image is: {img_arr.shape}")
+        print(img_arr)
+        
+        c_img = c_img.rotate(-90).transpose(Image.FLIP_LEFT_RIGHT)
+        img_arr = np.array(c_img.convert("L"))[..., np.newaxis]
+        print(f"New shape after Transpose: {img_arr.shape}")
         print(img_arr)
         plt.imshow(img_arr[:, :, 0], cmap="gray")
         plt.title("Zoomed Image")
@@ -39,7 +43,3 @@ def zoom(img):
 
 if __name__ == "__main__":
     main()
-
-# https://www.geeksforgeeks.org/python-pil-image-resize-method/
-# https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html
-# https://www.geeksforgeeks.org/how-to-display-an-image-in-grayscale-in-matplotlib/
