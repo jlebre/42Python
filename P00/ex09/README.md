@@ -7,5 +7,5 @@
 You can install the package using:
 
 ```sh
-pip install ft_package
+pip install ft_package_jlebre
 ```
